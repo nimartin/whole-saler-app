@@ -20,6 +20,7 @@ public class WholeSalerService {
     		@QueryParam("quantite") String quantite) {
 		Client client = ClientBuilder.newClient( );
 		int qte = Integer.parseInt(quantite);
+		qte+=1;
 		
 		String jsonObj = "{";
 		jsonObj += "isbn : "+isbn;
@@ -28,7 +29,7 @@ public class WholeSalerService {
 		jsonObj += "}";
 		
 		WebTarget webTarget = client.target("http://1-dot-inf63app9.appspot.com/rest/shopping");
-		webTarget.request(MediaType.APPLICATION_JSON).put(Entity.json(jsonObj),Response.class);
+		webTarget.request().put(Entity.json(jsonObj),Response.class);
 		
 		return jsonObj;
     }
