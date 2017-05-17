@@ -22,12 +22,12 @@ public class WholeSalerService {
 		int qte = Integer.parseInt(quantite);
 		int bookStock = Integer.parseInt(stock);
 
-		String message = "Aucun message";
+		String message = qte + " livres commandés";
 		if(bookStock > qte){
 			qte = bookStock - qte;
 		}else{
 			int diff = qte - bookStock;
-			message = diff + "livres commandés pour le client + 10 supplémentaires";
+			message = diff + " livres commandés pour le client + 10 supplémentaires";
 			qte = 10;
 		}
 		
