@@ -28,7 +28,7 @@ public class WholeSalerService {
 		}else{
 			int diff = qte - bookStock;
 			message = diff + "livres commandés pour le client + 10 supplémentaires";
-			qte = diff + 10;
+			qte = 10;
 		}
 		
 		String jsonObj = "{";
