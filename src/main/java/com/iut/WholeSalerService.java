@@ -17,15 +17,25 @@ public class WholeSalerService {
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response addStock(@QueryParam("corr") String corr,@QueryParam("isbn") String isbn,
-    		@QueryParam("quantite") String quantite) {
+    		@QueryParam("quantite") String quantite,@QueryParam("stock") String stock) {
 		Client client = ClientBuilder.newClient( );
 		int qte = Integer.parseInt(quantite);
-		qte+=1;
+		int bookStock = Integer.parseInt(stock);
+
+		String message = "";
+		if(bookStock > qte){
+			qte = bookStock - qte;
+		}else{
+			int diff = qte - bookStock;
+			message = diff + "livres commandés pour le client + 10 supplémentaires";
+			qte = diff + 10;
+		}
 		
 		String jsonObj = "{";
 		jsonObj += "isbn : "+isbn;
 		jsonObj += ",corr : "+corr;
 		jsonObj += ",stock : "+qte;
+		jsonObj += ",message : "+message;
 		jsonObj += "}";
 		
 		WebTarget webTarget = client.target("http://1-dot-inf63app9.appspot.com/rest/shopping");
