@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 public class WholeSalerService {
 	
 	@GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String addStock(@QueryParam("corr") String corr,@QueryParam("isbn") String isbn,
     		@QueryParam("quantite") String quantite) {
 		Client client = ClientBuilder.newClient( );
