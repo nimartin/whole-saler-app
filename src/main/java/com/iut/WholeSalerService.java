@@ -16,7 +16,7 @@ public class WholeSalerService {
 	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addStock(@QueryParam("corr") String corr,@QueryParam("isbn") String isbn,
+    public String addStock(@QueryParam("corr") String corr,@QueryParam("isbn") String isbn,
     		@QueryParam("quantite") String quantite) {
 		Client client = ClientBuilder.newClient( );
 		int qte = Integer.parseInt(quantite);
@@ -31,6 +31,6 @@ public class WholeSalerService {
 		Response response = webTarget.request(MediaType.APPLICATION_JSON)
 	               .put(Entity.entity(jsonObj, MediaType.APPLICATION_JSON),Response.class);
 		
-		return Response.noContent().build();
+		return jsonObj;
     }
 }
