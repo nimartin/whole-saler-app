@@ -22,7 +22,7 @@ public class WholeSalerService {
 		int qte = Integer.parseInt(quantite);
 		int bookStock = Integer.parseInt(stock);
 
-		String message = "";
+		String message = " ";
 		if(bookStock > qte){
 			qte = bookStock - qte;
 		}else{
