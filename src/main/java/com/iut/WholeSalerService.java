@@ -29,8 +29,8 @@ public class WholeSalerService {
 		jsonObj += "}";
 		
 		WebTarget webTarget = client.target("http://1-dot-inf63app9.appspot.com/rest/shopping");
-		webTarget.request().put(Entity.json(jsonObj),Response.class);
+		Response r = webTarget.request().put(Entity.json(jsonObj),Response.class);
 		
-		return jsonObj;
+		return String.valueOf(r.getStatus());
     }
 }
