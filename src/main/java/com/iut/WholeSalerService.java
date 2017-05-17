@@ -25,7 +25,7 @@ public class WholeSalerService {
 		String jsonObj = "{";
 		jsonObj += "isbn : "+isbn;
 		jsonObj += ",corr : "+corr;
-		jsonObj += ",stock : "+qte+1;
+		jsonObj += ",stock : "+qte;
 		jsonObj += "}";
 		
 		WebTarget webTarget = client.target("http://1-dot-inf63app9.appspot.com/rest/shopping");
